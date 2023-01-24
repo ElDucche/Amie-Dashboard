@@ -5,3 +5,13 @@ export type User = {
     email: string;
     phone: string;
 }
+
+export type Event = {
+    cover: string;
+    title: string;
+    body: string;
+    category: string;
+    entrant: number;
+    createdAt: string;
+    place: string;
+}

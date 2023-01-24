@@ -3,7 +3,7 @@ import { AiOutlineCalendar } from 'react-icons/ai';
 import { FaMapMarkerAlt, FaUsers } from 'react-icons/fa';
 import { BsCameraVideo } from 'react-icons/bs';
 
-function Event({img, name, date, place, peoples} : {img: string; name: string; date: string; place: string; peoples: number;}) {
+function EventCard({img, name, date, place, peoples} : {img: string; name: string; date: string; place: string; peoples: number;}) {
   return (
     <div className="bg-base-100 w-64 h-56 rounded-xl border border-neutral/10 drop-shadow-lg p-2">
         <img src={img} className='w-full h-20 object-cover rounded-lg'/>
@@ -18,4 +18,4 @@ function Event({img, name, date, place, peoples} : {img: string; name: string; d
   )
 }
 
-export default Event
+export default EventCard

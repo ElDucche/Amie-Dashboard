@@ -21,6 +21,9 @@
     "category": {
       "string": ["one", "two", "three"]
     },
+    "place": {
+      "string": ["Tours", "Paris", "Nancy", "En ligne"]
+    },
     "entrant": {
       "int": {
         "min": 0,
