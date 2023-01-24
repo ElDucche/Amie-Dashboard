@@ -7,6 +7,7 @@ export type User = {
 }
 
 export type Event = {
+    id: number;
     cover: string;
     title: string;
     body: string;
