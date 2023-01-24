@@ -12,7 +12,7 @@ export default function RootLayout({
       <html lang="fr">
         <body className='flex'>
             <Menu />
-            <div className='p-4 w-full'>
+            <div className='p-4'>
                 {children}
             </div>
             

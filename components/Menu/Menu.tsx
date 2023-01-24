@@ -3,30 +3,30 @@ import { AiOutlineQuestionCircle, AiOutlineHome, AiOutlineCalendar, AiOutlineUse
 
 function Menu() {
   return (
-    <div className=''>
-      <ul className="menu bg-secondary w-56 p-2 h-full min-h-screen gap-4 pt-6 font-semibold rounded-none">
-        <li className='hover:bg-primary/20 rounded-lg'>
-          <Link href={'/'}>
+    <div className='w-28 md:w-48'>
+      <ul className="menu bg-secondary w-20 md:w-48 p-2 h-full min-h-screen gap-4 pt-6 font-semibold rounded-none fixed m-auto">
+        <li className='rounded-lg'>
+          <Link href={'/'} className="m-auto md:m-0">
           <AiOutlineHome size='25'className='text-primary'/>
-            Accueil
+            <p className='hidden md:block'>Accueil</p>
           </Link>
         </li>
-        <li className='hover:bg-primary/20 rounded-lg'>
-          <Link href={'/events/'}>
+        <li className='rounded-lg'>
+          <Link href={'/events/'} className="m-auto md:m-0">
           <AiOutlineCalendar size='25'className='text-primary'/>
-            Évènements
+          <p className='hidden md:block'>Évènements</p> 
           </Link>
         </li>
-        <li className='hover:bg-primary/20 rounded-lg'>
-          <Link href={'/users/'}>
+        <li className='rounded-lg'>
+          <Link href={'/users/'} className="m-auto md:m-0">
             <AiOutlineUser size='25'className='text-primary'/>
-            Utilisateurs
+            <p className='hidden md:block'>Utilisateurs</p>
           </Link>
         </li>
-        <li className='hover:bg-primary/20 rounded-lg'>
-          <Link href={'/faq/'}>
+        <li className='rounded-lg'>
+          <Link href={'/faq/'} className="m-auto md:m-0">
             <AiOutlineQuestionCircle size='25'className='text-primary'/>
-            F.A.Q
+            <p className='hidden md:block'>F.A.Q</p>
           </Link>
         </li>
       </ul>

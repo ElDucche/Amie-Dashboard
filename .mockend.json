@@ -19,7 +19,7 @@
       }
     },
     "category": {
-      "string": ["one", "two", "three"]
+      "string": ["Security", "Data", "Game", "Analysis"]
     },
     "place": {
       "string": ["Tours", "Paris", "Nancy", "En ligne"]
