@@ -1,5 +1,5 @@
 {
-  "Post": {
+  "Event": {
     "_": {
       "items": 10
     },
@@ -21,10 +21,7 @@
     "category": {
       "string": ["one", "two", "three"]
     },
-    "isDraft": {
-      "boolean": {}
-    },
-    "views": {
+    "entrant": {
       "int": {
         "min": 0,
         "max": 1000
