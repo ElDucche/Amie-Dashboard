@@ -24,7 +24,7 @@ export default async function Events() {
 
         <div className="mt-4 mx-auto flex w-4/5 flex-wrap gap-4 justify-around">
           {events.map((event) => (
-            <EventCard img={event.cover} name={event.title} date={event.createdAt} place={event.place} peoples={event.entrant} />
+            <EventCard img={event.cover} name={event.title} date={event.createdAt} place={event.place} peoples={event.entrant} key={event.id}/>
           ))}
         </div>
       </div>
