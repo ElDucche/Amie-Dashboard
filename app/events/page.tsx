@@ -1,11 +1,11 @@
 import Title from "../../components/layout/Title";
 import Link from "next/link";
 import EventCard from "../../components/EventCard";
-import { Event } from "../../typing";
+import { Evenment } from "../../typing";
 
 const fetchEvent = async () => {
   const res = await fetch("https://mockend.com/ElDucche/Amie-Dashboard/events")
-  const events: Event[] = await res.json();
+  const events: Evenment[] = await res.json();
   return events;
 }
 
@@ -23,8 +23,8 @@ export default async function Events() {
         </div>
           <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {events.map((event) => (
-              <Link href={`/events/${event.id}`}>
-                <EventCard img={event.cover} name={event.title} date={event.createdAt} place={event.place} peoples={event.entrant} key={event.id}/>
+              <Link href={`/events/${event.id}`} key={event.id}>
+                <EventCard img={event.cover} name={event.title} date={event.createdAt} place={event.place} peoples={event.entrant} />
               </Link>
             ))}
           </div>

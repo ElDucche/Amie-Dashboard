@@ -11,3 +11,9 @@
 .hover {
     @apply bg-secondary;
 }
+
+@layer {
+    .tag {
+        @apply w-24 h-10 rounded-full text-base-100 flex items-center justify-evenly;
+    }
+}
