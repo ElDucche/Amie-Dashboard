@@ -34,7 +34,7 @@ function getTag(tag: string) : any {
         default :
             return <label className='tag bg-stone-500'>
                 <MdOutlineDoNotDisturbAlt className='text-base-100'/>
-                <span>Untag</span>
+                <span>Untagged</span>
             </label>;
             break
     }

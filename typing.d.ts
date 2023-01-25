@@ -1,9 +1,10 @@
 export type User = {
     id : number;
-    name: string;
-    username: string;
+    firstName: string;
+    lastName: string;
     email: string;
-    phone: string;
+    role: string;
+    createdAt: string;
 }
 
 export type Evenment = {
