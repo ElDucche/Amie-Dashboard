@@ -6,7 +6,7 @@ export type User = {
     phone: string;
 }
 
-export type Event = {
+export type Evenment = {
     id: number;
     cover: string;
     title: string;
