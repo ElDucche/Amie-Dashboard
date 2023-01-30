@@ -36,8 +36,8 @@
         "max": "2025-12-31T23:59:59Z"
       }
     },
-    "comments": {
-      "hasMany": "Comment"
+    "status": {
+      "string": ["Validated", "Waiting"]
     }
   },
   "User": {
