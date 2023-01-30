@@ -7,18 +7,16 @@ import { Evenment } from "../typing";
 export default async function Home() {
     const req = await fetch("https://mockend.com/ElDucche/Amie-Dashboard/events");
     const eventsData: Evenment[] = await req.json();
-    const date = new Date();
-    console.log(date)
+
     return (
     <div className="gap-6">
         <Title>Accueil</Title>
         <Board cols="3" title="Évènements">
-            <Card title="En cours/À venir">
+            <Card title="En cours / À venir">
                 <span>
-                    {eventsData.filter((event) => {
-                        event.createdAt >= date;
-                        console.log(event.createdAt)
-                    }).length}
+                    {/* {eventsData.filter((event) => {
+                        event.createdAt.valueOf() >= date.valueOf();
+                    }).length} */}
                 </span>
             </Card>
             <Card title="À valider">
@@ -26,9 +24,9 @@ export default async function Home() {
             </Card>
             <Card title="Passés">
                 <span>
-                {eventsData.filter((event) => {
+                {/* {eventsData.filter((event) => {
                         event.createdAt < date;
-                    }).length}
+                    }).length} */}
                 </span>
             </Card>
         </Board>
