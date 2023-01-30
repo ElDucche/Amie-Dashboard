@@ -12,7 +12,7 @@ function EventCard({event} : {event: Evenment;}) {
       <ModifyEventButton event={event} />
       <img src={event.cover} className='w-full h-20 object-cover rounded-lg'/>
       <h3 className='text-xl font-medium ml-2 my-2 first-letter:capitalize'>{event.title}</h3>
-      <span className=' flex my-1 font-light'><AiOutlineCalendar className=' text-rose-800 mx-4'/> {String(event.createdAt)}</span>
+      <span className=' flex my-1 font-light'><AiOutlineCalendar className=' text-rose-800 mx-4'/> {console.log(event.createdAt.toISOString)}</span>
       <span className='flex my-1 font-thin'>
           {(event.place === "En ligne") ? <BsCameraVideo className='text-rose-800 mx-4'/> : <FaMapMarkerAlt className='text-rose-800 mx-4'/> }
           {event.place}

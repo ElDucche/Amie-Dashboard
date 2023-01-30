@@ -17,9 +17,7 @@ export default async function Home() {
                 <span>
                     {eventsData.filter((event) => {
                         event.createdAt >= date;
-                        if (event.createdAt > date) {
-                            console.log('+1')
-                        }
+                        console.log(event.createdAt)
                     }).length}
                 </span>
             </Card>
