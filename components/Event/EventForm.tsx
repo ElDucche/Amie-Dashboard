@@ -8,17 +8,17 @@ import {GiTeacher} from 'react-icons/gi'
 
 export const EventForm = ({event}: {event: Evenment}) => {
   return (
-    <form className='grid gap-2 md:ml-6 p-2 border border-neutral/20 rounded-xl'>
-        <img src={event.cover} className="w-72 h-32 rounded-xl object-cover" />
+    <form className='grid gap-2 p-2 rounded-xl m-auto'>
+        <img src={event.cover} className="w-full h-32 rounded-xl object-cover" />
         <input 
-            className='input input-bordered text-xl font-medium ml-2 my-2 first-letter:capitalize' 
+            className='input input-bordered text-xl font-medium my-2 first-letter:capitalize' 
             defaultValue={event.title}
 
         />
         <label className=''>
-        <div className="form-control flex items-center">
-            <div className="input-group">
-                <select className="select select-bordered" id='selector'>
+        <div className="flex items-center justify-between">
+            <div className="">
+                <select className="select select-bordered w-44 text-center" id='selector'>
                     <option disabled selected value={"Security"}><Tag type={event.category}/></option>
                     <option value={"Security"}><Tag type="Security"/></option>
                     <option value={"Game"}><Tag type="Game" /></option>
@@ -54,8 +54,7 @@ export const EventForm = ({event}: {event: Evenment}) => {
                 defaultValue={'Jonh Doe'}
             />
         </label>
-        
-        {/* <button className='btn btn-primary' type='submit'>Modifier</button> */}
+        <button className='btn btn-primary' type='submit'>Modifier</button>
     </form>
   )
 }
