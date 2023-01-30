@@ -1,17 +1,17 @@
 import { ModifyUserButton } from "../../components/layout/ModifyUserButton";
 import Title from "../../components/layout/Title";
-import { User } from "../../typing";
+import { Employee, User } from "../../typing";
 
 
 
-const fetchUsers = async () => {
-    const res = await fetch('https://mockend.com/ElDucche/Amie-Dashboard/users')
-    const users: User[] = await res.json()
-    return users;
+const fetchEmployees = async () => {
+    const res = await fetch('http://lyserofinance-env.eba-rpnjkdkg.us-east-1.elasticbeanstalk.com/getallutilisateurs')
+    const employees: Employee[] = await res.json()
+    return employees;
 }
 
 export default async function Users() {
-    const users = await fetchUsers(); 
+    const employees = await fetchEmployees(); 
    return (
         <div>
              <Title>Utilisateurs</Title>
@@ -23,21 +23,22 @@ export default async function Users() {
                         <tr className="h-12">
                             <th className='p-4 h-12 bg-base-100 border-b border-b-primary hover:bg-primary hover:text-base-100 transition-all'>Nom</th>
                             <th className='p-4 h-12 bg-base-100 border-b border-b-primary hover:bg-primary hover:text-base-100 transition-all'>Prénom</th>
-                            <th className='p-4 h-12 bg-base-100 border-b border-b-primary hover:bg-primary hover:text-base-100 transition-all'>Rôle</th>
+                            {/* <th className='p-4 h-12 bg-base-100 border-b border-b-primary hover:bg-primary hover:text-base-100 transition-all'>Rôle</th> */}
                             <th className='p-4 h-12 bg-base-100 border-b border-b-primary hover:bg-primary hover:text-base-100 transition-all'>Email</th>
-                            <th className='p-4 h-12 bg-base-100 border-b border-b-primary hover:bg-primary hover:text-base-100 transition-all'>Date création</th>
+                            {/* <th className='p-4 h-12 bg-base-100 border-b border-b-primary hover:bg-primary hover:text-base-100 transition-all'>Date création</th> */}
                             <th className="p-4 h-12 bg-base-100 border-b border-b-primary hover:bg-primary hover:text-base-100 transition-all">Modifier</th>
                         </tr>
                         </thead>
                         <tbody className="transition-all delay-150">
-                            {users.map(user =>( 
-                                    <tr className="group transition-all hover:bg-secondary" key={user.id}>
-                                        <th className="p-4 h-12 font-light uppercase transition-all">{user.lastName}</th>
-                                        <th className="p-4 h-12 font-light capitalize transition-all"> {user.firstName}</th>
-                                        <th className="p-4 h-12 font-light transition-all">{user.role}</th>
-                                        <th className="p-4 h-12 font-light transition-all">{user.email}</th>
-                                        <th className="p-4 h-12 font-light transition-all">{user.createdAt}</th>
-                                        <th className="p-4 h-12"><ModifyUserButton user={user} /></th>
+                            {employees.map(employee =>( 
+                                    <tr className="group transition-all hover:bg-secondary" key={employee.id}>
+                                        <th className="p-4 h-12 font-light uppercase transition-all">{employee.nom}</th>
+                                        <th className="p-4 h-12 font-light capitalize transition-all"> {employee.prenom}</th>
+                                        <th className="p-4 h-12 font-light transition-all">{employee.mail}</th>
+                                        {/* <th className="p-4 h-12 font-light transition-all">{user.createdAt}</th> */}
+                                        <th className="p-4 h-12">
+                                            {/* <ModifyUserButton user={employee} /> */}
+                                        </th>
                                     </tr>
                                     
                             ))}

@@ -33,7 +33,7 @@ export const EventForm = ({event}: {event: Evenment}) => {
             <AiOutlineCalendar size={"55"} className='bg-secondary p-4 text-primary rounded-xl mr-2'/>
             <input 
                 className='input input-bordered w-full'
-                defaultValue={event.createdAt}
+                defaultValue={String(event.createdAt)}
             />
         </label>
         <label className='flex items-center'>
@@ -52,6 +52,13 @@ export const EventForm = ({event}: {event: Evenment}) => {
             <input
                 className='input input-bordered w-full' 
                 defaultValue={'Jonh Doe'}
+            />
+        </label>
+        <label>
+            Statut :
+            <input 
+                className='input input-bordered w-full' 
+                defaultValue={(event.status === "Waiting" ? "En attente" : "Validé")}
             />
         </label>
         <button className='btn btn-primary' type='submit'>Modifier</button>

@@ -16,4 +16,14 @@ export type Evenment = {
     entrant: number;
     createdAt: Date;
     place: string;
+    status: string;
+}
+
+export type Employee = {
+    id: number;
+    prenom: string;
+    nom: string;
+    mail: string;
+    motDePasse: string;
+    dateDerniereInitialisationMotDePasse: Date;
 }

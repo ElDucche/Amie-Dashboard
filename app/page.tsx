@@ -3,10 +3,13 @@ import { FaHeart } from 'react-icons/fa'
 import { Board } from "../components/Home/Board";
 import { Card } from "../components/Home/Card";
 import { Evenment } from "../typing";
+import clsx from "clsx";
 
 export default async function Home() {
     const req = await fetch("https://mockend.com/ElDucche/Amie-Dashboard/events");
     const eventsData: Evenment[] = await req.json();
+
+    const tauxParticipation = Math.floor((eventsData.map(event => event.entrant).reduce((acc, curr) => acc + curr))/eventsData.length/1000*100);
 
     return (
     <div className="gap-6">
@@ -17,33 +20,35 @@ export default async function Home() {
                     {/* {eventsData.filter((event) => {
                         event.createdAt.valueOf() >= date.valueOf();
                     }).length} */}
+                    12
                 </span>
             </Card>
             <Card title="À valider">
-                <span> 12 </span>
+                <span> 
+                    {eventsData.filter(event => event.status === "Waiting").length} 
+                </span>
             </Card>
             <Card title="Passés">
                 <span>
-                {/* {eventsData.filter((event) => {
+                    {/* {eventsData.filter((event) => {
                         event.createdAt < date;
                     }).length} */}
+                    21
                 </span>
             </Card>
         </Board>
         
-        <div className="grid grid-cols-2 grid-rows-2  p-6 border border-neutral/20 rounded-xl my-2">
-            <h1 className=" col-span-2 text-3xl h-16">Taux</h1>
-            <div className="text-center">
-                <h3>Taux de participation global</h3>
-                {/* To Do : afficher la valeur de (tous les participant ÷ nombre d'event / 1000 x) 100 */}
-                <div className="radial-progress" style={{"--value": 70}}>70%</div>
-            </div>
-            <div className=" text-center">
-                <h3>Taux de satisfaction</h3>
-                {/* To Do : afficher la note moyenne des évènements passés */}
-                <span className="flex items-center justify-center text-xl font-semibold place-self-center"> 4,3 <FaHeart className="mx-2"/> </span>
-            </div>
-        </div>
+        <Board cols="2" title="Taux">
+            <Card title="Taux de participation globale">
+                <div className={clsx("radial-progress", (tauxParticipation >= 50 ? "text-primary" : "text-warning") )} style={{"--value": tauxParticipation}}>
+                    {tauxParticipation}%
+                </div>
+            </Card>
+            <Card title="Taux de satisfaction">
+
+            </Card>
+        </Board>
+
         <div className="grid grid-cols-3  p-6 border border-neutral/20 rounded-xl my-2">
         <h1 className=" col-span-3 text-3xl h-16">Lieux</h1>
             <div className=" place-self-center text-center">
