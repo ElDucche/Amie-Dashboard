@@ -14,6 +14,6 @@ export type Evenment = {
     body: string;
     category: string;
     entrant: number;
-    createdAt: string;
+    createdAt: Date;
     place: string;
 }
