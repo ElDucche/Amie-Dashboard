@@ -1,28 +1,33 @@
 import Title from "../components/layout/Title";
 import { FaHeart } from 'react-icons/fa'
+import { Board } from "../components/Home/Board";
+import { Card } from "../components/Home/Card";
+import { Evenment } from "../typing";
 
-export default function Home() {
+export default async function Home() {
+    const req = await fetch("https://mockend.com/ElDucche/Amie-Dashboard/events");
+    const eventsData: Evenment[] = await req.json();
+    const date = new Date();
+    console.log(date)
     return (
     <div className="gap-6">
         <Title>Accueil</Title>
-        <div className="grid grid-cols-3 grid-rows-2 p-6 border border-neutral/20 rounded-xl my-2">
-            <h1 className="col-span-3 text-3xl h-16">Évènements</h1>
-            <div className=" place-self-center text-center">
-                <h3>Evenements en cours</h3>
-                {/* To Do : afficher le nombre d'évenèments dont la date n'est pas passé */}
+        <Board cols="3" title="Évènements">
+            <Card title="En cours">
+                <span>
+                    {eventsData.filter((event) => {
+                        event.createdAt > date;
+                    }).length}
+                </span>
+            </Card>
+            <Card title="À valider">
                 <span> 12 </span>
-            </div>
-            <div className=" place-self-center text-center">
-                <h3>Evenements passés</h3>
-                {/* To Do : afficher le nombre d'évenèments dont la date est passé */}
-                <span> 43 </span>
-            </div>
-            <div className=" place-self-center text-center">
-                <h3>Evenements en attente de validation</h3>
-                {/* To Do : afficher le nombre d'évenèments dont le status est 'En cours' */}
-                <span className="place-items-center"> 26 </span>
-            </div>
-        </div>
+            </Card>
+            <Card title="Passés">
+                <span> 12 </span>
+            </Card>
+        </Board>
+        
         <div className="grid grid-cols-2 grid-rows-2  p-6 border border-neutral/20 rounded-xl my-2">
             <h1 className=" col-span-2 text-3xl h-16">Taux</h1>
             <div className="text-center">
