@@ -13,10 +13,13 @@ export default async function Home() {
     <div className="gap-6">
         <Title>Accueil</Title>
         <Board cols="3" title="Évènements">
-            <Card title="En cours">
+            <Card title="En cours/À venir">
                 <span>
                     {eventsData.filter((event) => {
-                        event.createdAt > date;
+                        event.createdAt >= date;
+                        if (event.createdAt > date) {
+                            console.log('+1')
+                        }
                     }).length}
                 </span>
             </Card>
@@ -24,7 +27,11 @@ export default async function Home() {
                 <span> 12 </span>
             </Card>
             <Card title="Passés">
-                <span> 12 </span>
+                <span>
+                {eventsData.filter((event) => {
+                        event.createdAt < date;
+                    }).length}
+                </span>
             </Card>
         </Board>
         
