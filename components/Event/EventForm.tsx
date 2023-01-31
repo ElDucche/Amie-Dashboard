@@ -1,5 +1,6 @@
 'use client'
-import { AiOutlineCalendar, AiOutlineUser } from 'react-icons/ai';
+
+import { AiOutlineCalendar } from 'react-icons/ai';
 import Tag from '../../components/Tag';
 import { Evenment } from '../../typing';
 import { FaMapMarkerAlt, FaUsers } from 'react-icons/fa';

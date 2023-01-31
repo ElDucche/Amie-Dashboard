@@ -11,3 +11,13 @@ export default function handler(
 ) {
   res.status(200).json({ name: 'John Doe' })
 }
+
+export const checkStatus = (response : any) => {
+  if (response.ok) {
+      return response;
+  }
+  // convert non-2xx HTTP responses into errors:
+  const error = new Error(response.statusText);
+  error.message = response;
+  return Promise.reject(error);
+}
