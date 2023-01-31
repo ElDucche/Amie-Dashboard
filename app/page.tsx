@@ -40,6 +40,7 @@ export default async function Home() {
         
         <Board cols="2" title="Taux">
             <Card title="Taux de participation globale">
+                {/* @ts-ignore */}
                 <div className={clsx("radial-progress", (tauxParticipation >= 50 ? "text-primary" : "text-warning") )} style={{"--value": tauxParticipation}}>
                     {tauxParticipation}%
                 </div>
