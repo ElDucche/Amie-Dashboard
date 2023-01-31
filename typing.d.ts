@@ -21,9 +21,9 @@ export type Evenment = {
 
 export type Employee = {
     id: number;
-    prenom: string;
-    nom: string;
-    mail: string;
-    motDePasse: string;
-    dateDerniereInitialisationMotDePasse: Date;
+    firstName: string;
+    lastName: string;
+    // mail: string;
+    // motDePasse: string;
+    // dateDerniereInitialisationMotDePasse: Date;
 }
