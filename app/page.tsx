@@ -8,6 +8,7 @@ import clsx from "clsx";
 export default async function Home() {
     const req = await fetch("https://mockend.com/ElDucche/Amie-Dashboard/events");
     const eventsData: Evenment[] = await req.json();
+    const date = new Date()
 
     const tauxParticipation = Math.floor((eventsData.map(event => event.entrant).reduce((acc, curr) => acc + curr))/eventsData.length/1000*100);
 
@@ -17,10 +18,10 @@ export default async function Home() {
         <Board cols="3" title="Évènements">
             <Card title="En cours / À venir">
                 <span>
-                    {/* {eventsData.filter((event) => {
-                        event.createdAt.valueOf() >= date.valueOf();
-                    }).length} */}
-                    12
+                    {eventsData.map(event => event.createdAt).filter((eventDate) => {
+                        eventDate >= new Date('2023-02-01T00:00:00Z')
+                    }).length}
+                    
                 </span>
             </Card>
             <Card title="À valider">
@@ -30,10 +31,9 @@ export default async function Home() {
             </Card>
             <Card title="Passés">
                 <span>
-                    {/* {eventsData.filter((event) => {
-                        event.createdAt < date;
-                    }).length} */}
-                    21
+                    {eventsData.map(event => event.createdAt).filter((eventDate) => {
+                        eventDate.valueOf() <= date.valueOf();
+                    }).length}
                 </span>
             </Card>
         </Board>
@@ -46,52 +46,44 @@ export default async function Home() {
                 </div>
             </Card>
             <Card title="Taux de satisfaction">
-
+                    <label className="transition-all duration-150 flex items-center justify-center">
+                        <p>9.87</p>
+                        <FaHeart  className="mx-2"/>
+                    </label>
             </Card>
         </Board>
 
-        <div className="grid grid-cols-3  p-6 border border-neutral/20 rounded-xl my-2">
-        <h1 className=" col-span-3 text-3xl h-16">Lieux</h1>
-            <div className=" place-self-center text-center">
-                <h3>Paris</h3>
-                {/* To Do : afficher le nombre d'évenèments dont la date n'est pas passé */}
-                <span> 12 </span>
-            </div>
-            <div className=" place-self-center text-center">
-                <h3>Tours</h3>
-                {/* To Do : afficher le nombre d'évenèments dont la date est passé */}
-                <span> 43 </span>
-            </div>
-            <div className=" place-self-center text-center">
-                <h3>Nancy</h3>
-                {/* To Do : afficher le nombre d'évenèments dont le status est 'En cours' */}
-                <span className="place-items-center"> 26 </span>
-            </div>
-        </div>
-        <div className="grid grid-cols-4  p-6 border border-neutral/20 rounded-xl my-2">
-        <h1 className=" col-span-4 text-3xl">Demandes</h1>
-            <div className=" place-self-center text-center">
-                <h3>Validations d'évènements</h3>
-                {/* To Do : afficher le nombre d'évenèments dont la date n'est pas passé */}
-                <span> 12 </span>
-            </div>
-            <div className=" place-self-center text-center">
-                <h3>Accréditations</h3>
-                {/* To Do : afficher le nombre d'évenèments dont la date est passé */}
-                <span> 43 </span>
-            </div>
-            <div className=" place-self-center text-center">
-                <h3>Création d'utilisateur</h3>
-                {/* To Do : afficher le nombre d'évenèments dont le status est 'En cours' */}
-                <span className="place-items-center"> 26 </span>
-            </div>
-            <div className=" place-self-center text-center">
-                <h3>Nouvelles Questions F.A.Q</h3>
-                {/* To Do : afficher le nombre d'évenèments dont le status est 'En cours' */}
-                <span className="place-items-center"> 26 </span>
-            </div>
-        </div>
+        <Board cols="2" title="Lieux">
+            <Card title="Paris">
+                <span>
+                    {
+                        eventsData.map(event => event.place).filter(place => place === "Paris").length
+                    }
+                </span>
+            </Card>
+            <Card title="Tours">
+            <span>
+                    {
+                        eventsData.map(event => event.place).filter(place => place === "Tours").length
+                    }
+                </span>
+            </Card>
+            <Card title="Nancy">
+            <span>
+                    {
+                        eventsData.map(event => event.place).filter(place => place === "Nancy").length
+                    }
+                </span>
+            </Card>
+            <Card title="En ligne">
+            <span>
+                    {
+                        eventsData.map(event => event.place).filter(place => place === "En ligne").length
+                    }
+                </span>
+            </Card>
 
+        </Board>
     </div>
     )
 }
