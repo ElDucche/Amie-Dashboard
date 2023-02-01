@@ -16,7 +16,7 @@ export default async function Users() {
    return (
         <div>
              <Title>Utilisateurs</Title>
-             <div className="grid place-content-center place-items-center transition-all">
+             <div className="">
                 <div className="overflow-x-auto w-full mt-12 transition-all">
                     <table className="w-full rounded-none transition-all">
                         {/* <!-- head --> */}
@@ -31,7 +31,7 @@ export default async function Users() {
                             <th className="p-4 h-12 border-b border-b-primary bg-primary hover:bg-secondary hover:text-neutral text-base-100 transition-all"><AddUserButton /></th>
                         </tr>
                         </thead>
-                        <tbody className="transition-all delay-150">
+                        <tbody className="transition-all duration-150">
                             {employees.map(employee =>( 
                                     <tr className="group transition-all hover:bg-secondary" key={employee.id}>
                                         <th className="p-4 h-12 font-light uppercase transition-all">{employee.lastName}</th>

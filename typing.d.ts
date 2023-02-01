@@ -27,3 +27,8 @@ export type Employee = {
     // motDePasse: string;
     // dateDerniereInitialisationMotDePasse: Date;
 }
+
+export type Faq = {
+    question: string;
+    reponse: string;
+}
