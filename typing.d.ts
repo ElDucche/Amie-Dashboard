@@ -5,18 +5,37 @@ export type User = {
     email: string;
     role: string;
     createdAt: string;
+    roles: Role[];
+}
+
+export type Role = {
+    idRole: number;
+    libelle: string;
 }
 
 export type Evenment = {
-    id: number;
-    cover: string;
-    title: string;
-    body: string;
-    category: string;
-    entrant: number;
-    createdAt: Date;
-    place: string;
-    status: string;
+    dateCreationEvenement: Date;
+    date_debut: string;
+    date_fin:string;
+    description: string;
+    heure_debut: string;
+    heure_fin: string;
+    idEvenement: number;
+    image: string;
+    label: string;
+    statut: string;
+    lien_replay: string;
+    lien_ressources: string;
+    lieuEntity : Lieu | null;
+}
+
+export type Lieu = {
+    adresse: string;
+    codePostal: string;
+    coordoneesGps: string;
+    idLieu: number ;
+    localisation: string;
+    ville: string;
 }
 
 export type Employee = {

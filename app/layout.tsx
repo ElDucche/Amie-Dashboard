@@ -12,12 +12,9 @@ export default function RootLayout({
       <html lang="fr">
         <body className='flex'>
             <Menu />
-            <div className='p-4'>
+            <div className='ml-28 md:ml-48 p-4'>
                 {children}
             </div>
-            
-        
-        
         </body>
       </html>
     );

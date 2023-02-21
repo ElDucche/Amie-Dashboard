@@ -13,7 +13,7 @@ export default async function Home() {
     const tauxParticipation = Math.floor((eventsData.map(event => event.entrant).reduce((acc, curr) => acc + curr))/eventsData.length/1000*100);
 
     return (
-    <div className="gap-6">
+    <div className="gap-6 w-full h-screen grid place-content-center place-items-center">
         <Title>Accueil</Title>
         <Board cols="3" title="Évènements">
             <Card title="En cours / À venir">

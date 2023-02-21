@@ -4,13 +4,14 @@ import { Evenment } from "../../typing";
 import { ModifyEventButton } from "../../components/layout/ModifyEventButton";
 
 const fetchEvent = async () => {
-  const res = await fetch("https://mockend.com/ElDucche/Amie-Dashboard/events")
+  const res = await fetch("http://amie.labinno-mtech.fr/api/evenement/getallevenements")
   const events: Evenment[] = await res.json();
   return events;
 }
 
 export default async function Events() {
     const events = await fetchEvent();
+    console.log(events);
     return (
       <div className="">
         <Title>Évènements</Title>
@@ -20,10 +21,11 @@ export default async function Events() {
           <button className="btn btn-outline btn-primary">Date</button>
           <button className="btn btn-outline btn-primary">Lieu</button>
           <button className="btn btn-outline btn-primary">Participant</button>
+          
         </div>
           <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {events.map((event) => (
-              <div key={event.id}>
+              <div key={event.idEvenement}>
                 <EventCard event={event} />
               </div>
             ))}
