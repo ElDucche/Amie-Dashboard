@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { AiOutlineQuestionCircle, AiOutlineHome, AiOutlineCalendar, AiOutlineUser } from 'react-icons/ai';
+import { AiOutlineQuestionCircle, AiOutlineHome, AiOutlineCalendar, AiOutlineUser, AiOutlineHeatMap } from 'react-icons/ai';
+import { FiMapPin } from 'react-icons/fi'
 
 function Menu() {
   return (
@@ -21,6 +22,12 @@ function Menu() {
           <Link href={'/users/'} className="m-auto md:m-0">
             <AiOutlineUser size='25'className='text-primary'/>
             <p className='hidden md:block'>Utilisateurs</p>
+          </Link>
+        </li>
+        <li className='rounded-lg'>
+          <Link href={'/lieux/'} className="m-auto md:m-0">
+            <FiMapPin size='25'className='text-primary'/>
+            <p className='hidden md:block'>Lieux</p>
           </Link>
         </li>
         <li className='rounded-lg'>
