@@ -1,10 +1,10 @@
 export type User = {
-    id : number;
-    firstName: string;
-    lastName: string;
-    email: string;
-    role: string;
-    createdAt: string;
+    dateDerniereInitialisationMotDePasse: string;
+    idUtilisateur : number;
+    mail: string;
+    motDePasse: string;
+    nom: string;
+    prenom: string;
     roles: Role[];
 }
 
@@ -16,7 +16,7 @@ export type Role = {
 export type Evenment = {
     dateCreationEvenement: Date;
     date_debut: string;
-    date_fin:string;
+    date_fin: string;
     description: string;
     heure_debut: string;
     heure_fin: string;
@@ -26,7 +26,8 @@ export type Evenment = {
     statut: string;
     lien_replay: string;
     lien_ressources: string;
-    lieuEntity : Lieu | null;
+    lieu : Lieu | null;
+    utilisateur: User;
 }
 
 export type Lieu = {
@@ -37,16 +38,6 @@ export type Lieu = {
     localisation: string;
     ville: string;
 }
-
-export type Employee = {
-    id: number;
-    firstName: string;
-    lastName: string;
-    // mail: string;
-    // motDePasse: string;
-    // dateDerniereInitialisationMotDePasse: Date;
-}
-
 export type Faq = {
     question: string;
     reponse: string;

@@ -6,16 +6,22 @@ import React from "react";
 export const AddUserForm = () => {
     const router = useRouter()
 
-    const addNewEmployee = async (event: any) => {
+    const addNewUser = async (event: any) => {
         const formData = new FormData(event.currentTarget);
-        const entries = Object.fromEntries(formData.entries())
+        const entries = Object.fromEntries(formData.entries());
+        const body = {
+            "mail": entries.mail,
+            "motDePasse": entries.motDePasse,
+            "nom": entries.nom,
+            "prenom": entries.prenom
+        }
         
-        fetch("http://lyserofinance-env.eba-rpnjkdkg.us-east-1.elasticbeanstalk.com/addemployee", {
+        await fetch("http://amie.labinno-mtech.fr/api/utilisateur/addutilisateur", {
             headers: {
                 'Content-Type': 'application/json'
                 },
                 method: 'POST',
-                body: JSON.stringify(entries)
+                body: JSON.stringify(body)
             }
         );
         
@@ -24,10 +30,11 @@ export const AddUserForm = () => {
     }
     
   return (
-    <form className='grid gap-2 h-full' onSubmit={addNewEmployee}>
-        <input className='capitalize h-16 pl-4 border border-neutral/20 rounded-xl focus:ring-1 ' name={'firstName'} placeholder='Prénom'/>
-        <input className=' uppercase h-16 pl-4 border border-neutral/20 rounded-xl focus:ring-1' name={'lastName'} placeholder='Nom' />
-        {/* <label> {employee.mail}</label> */}
+    <form className='grid gap-2 h-full' onSubmit={addNewUser}>
+        <input className='capitalize input input-bordered p-4' name={'prenom'} placeholder='Prénom'/>
+        <input className=' uppercase input input-bordered p-4' name={'nom'} placeholder='Nom' />
+        <input type="email" name="mail" className="input input-bordered p-4" placeholder="Email"/>
+        <input type="password" name="motDePasse" className="input input-bordered p-4" placeholder="Mot de passe"/>
         <button className='bottom-3 btn btn-primary text-base-100' type='submit'>Ajouter</button>
     </form>
   )
