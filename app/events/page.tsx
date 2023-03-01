@@ -1,7 +1,6 @@
 import Title from "../../components/layout/Title";
 import EventCard from "../../components/Event/EventCard";
 import { Evenment } from "../../typing";
-import { ModifyEventButton } from "../../components/layout/ModifyEventButton";
 import { AddEventButton } from "../../components/layout/AddEventButton";
 
 const fetchEvent = async () => {
@@ -13,7 +12,7 @@ const fetchEvent = async () => {
 export default async function Events() {
     const events = await fetchEvent();
     return (
-      <div className="">
+      <div className="ml-4">
         <Title>Évènements</Title>
         {/* <div className="mt-12 w-4/5 h-24 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 items-center">
           <h3 className="font-semibold self-center">Filtres</h3>

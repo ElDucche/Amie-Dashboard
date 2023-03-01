@@ -1,8 +1,9 @@
 import { ModifyUserButton } from "../../components/layout/ModifyUserButton";
 import Title from "../../components/layout/Title";
-import { AddUserButton } from "../../components/layout/AddUserButton";
+import { AddLieuButton } from "../../components/layout/AddLieuButton";
 import { Lieu } from "../../typing";
 import React from "react";
+import { ModifyLieuButton } from "../../components/layout/ModifyLieuButton";
 
 
 const fetchLieux = async () => {
@@ -16,7 +17,7 @@ export default async function Lieux() {
    return (
         <div className="ml-4">
              <Title>Lieux</Title>
-             <AddUserButton />
+             <AddLieuButton />
              <div className="">
                 <div className="mt-12 transition-all">
                     <table className="transition-all w-3/4 shadow-[5px_5px_0_0_rgba(106,165,23,0.12)] border border-secondary">
@@ -46,8 +47,7 @@ export default async function Lieux() {
                                         <th className="p-4 h-12 font-light transition-all">{lieu.ville}</th>
                                         <th className="p-4 h-12 font-light transition-all">{lieu.localisation}</th>
                                         <th className="p-4 h-12">
-                                            {/* <ModifyLieuButton lieu={lieu} /> */}
-                                            Todo
+                                            <ModifyLieuButton lieu={lieu} />
                                         </th>
                                     </tr>
                             ))}
