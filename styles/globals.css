@@ -17,3 +17,9 @@
         @apply w-24 h-10 rounded-full text-base-100 flex items-center justify-evenly;
     }
 }
+
+@layer components {
+    .shadow-mgen {
+        @apply shadow-[5px_5px_0_0_rgba(106,165,23,0.12)];
+    }
+}

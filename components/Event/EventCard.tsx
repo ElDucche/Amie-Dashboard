@@ -12,20 +12,20 @@ import { DeleteEventButton } from '../layout/DeleteEventButton';
 
 function EventCard({event} : {event: Evenment;}) {
   return (
-      <div className={clsx("group relative bg-base-100 w-64 border rounded-xl drop-shadow-md p-2",(event.statut === "En cours" ? "border-2 border-warning/20 hover:border-warning/60" : event.statut === "Validé" ? "border-2 border-primary/20 hover:border-primary/60" : "border-2 border-error/20 hover:border-error/60"))}>
+      <div className="group relative bg-base-100 w-72 h-full border rounded-lg p-2 border-secondary shadow-mgen hover:shadow-none">
         <div className='absolute inset-0 group-hover:backdrop-blur rounded-xl'></div>
         <ModifyEventButton event={event} />
         <DeleteEventButton event={event} />
         <div className="grid gap-4">
         <img src={`data:image/png;base64, ${event.image}`} className='w-full h-20 object-cover rounded-lg'/>
         <h3 className='text-xl font-medium ml-2 first-letter:capitalize'>{event.label}</h3>
-        <span className='font-thin text-sm flex items-center'><AiOutlineInfoCircle size={30} className=' text-rose-800 mx-4'/>{event.description}</span>
-        <span className=' flex font-light text-sm items-center'><AiOutlineCalendar size={20} className=' text-rose-800 mx-4'/> {event.date_debut} - {event.date_fin}</span>
+        <span className='font-thin text-sm flex items-center'><AiOutlineInfoCircle size={35} className=' text-primary mx-4 bg-primary/10 rounded-lg p-2'/>{event.description}</span>
+        <span className=' flex font-light text-sm items-center'><AiOutlineCalendar size={35} className=' text-primary mx-4 bg-primary/10 rounded-lg p-2'/> {event.date_debut} - {event.date_fin}</span>
         <span className='flex font-thin items-center'>
-            {(event.lieu === null ) ? <BsCameraVideo size={20} className='text-rose-800 mx-4'/> : <FaMapMarkerAlt size={20} className='text-rose-800 mx-4'/> }
+            {(event.lieu === null ) ? <BsCameraVideo size={35} className='text-primary mx-4 bg-primary/10 rounded-lg p-2'/> : <FaMapMarkerAlt size={35} className='text-primary mx-4 bg-primary/10 rounded-lg p-2'/> }
             {event.lieu ? event.lieu.localisation : "En ligne"}
         </span>
-        <div className='grid grid-cols-2 gap-2 place-content-center text-center'> <h4 className='font-thin col-span-2'>Liens ressources :</h4> <Link href={event.lien_replay} className='flex place-content-center'><MdOndemandVideo size={30} /></Link> <Link href={event.lien_ressources} className='flex place-content-center'><HiDocumentSearch size={30} /></Link></div>
+        <div className='grid grid-cols-2 gap-2 place-content-center text-center bg-secondary/30 py-2 rounded-lg'> <h4 className='col-span-2 font-semibold'>Liens ressources :</h4> <Link href={event.lien_replay} className='flex place-content-center'><MdOndemandVideo size={35} className='text-base-100 mx-4 bg-primary rounded-lg p-2 border border-primary'/></Link> <Link href={event.lien_ressources} className='flex place-content-center'><HiDocumentSearch size={35} className='text-base-100 mx-4 bg-primary rounded-lg p-2 border border-primary'/></Link></div>
         </div>
       </div>
   )

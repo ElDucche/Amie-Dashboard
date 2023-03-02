@@ -14,7 +14,7 @@ const fetchUsers = async () => {
 export default async function Users() {
     const users = await fetchUsers(); 
    return (
-        <div className="">
+        <div className="ml-4">
              <Title>Utilisateurs</Title>
              <AddUserButton />
              <div className="">

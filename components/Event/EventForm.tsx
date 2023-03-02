@@ -36,6 +36,8 @@ export const EventForm = ({event}: {event: Evenment}) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
         const entries = Object.fromEntries(formData.entries());
+        const lieu = lieux.data.filter((lieu: Lieu) => lieu.idLieu == Number(entries.lieux))
+        console.log(lieu)
         
         const body = {
             "date_debut": entries.date_debut,
@@ -47,7 +49,7 @@ export const EventForm = ({event}: {event: Evenment}) => {
             "label": entries.label,
             "lien_replay": entries.replay,
             "lien_ressources": entries.ressources,
-            "lieu": lieux.data[Number(entries.lieux)-1],
+            "lieu": lieu[0],
             "statut": entries.statut
         }
         console.log(entries);
@@ -78,6 +80,7 @@ export const EventForm = ({event}: {event: Evenment}) => {
                 className='input input-bordered text-xl font-medium my-2 first-letter:capitalize' 
                 name='label'
                 placeholder="Titre"
+                defaultValue={event.label}
             />
             
             {/* La c'est la typologie de l'évènement mais on verra ça plus tard */}
@@ -124,17 +127,13 @@ export const EventForm = ({event}: {event: Evenment}) => {
                 <FaMapMarkerAlt size={'55'} className='bg-secondary p-4 text-primary rounded-xl mr-2'/>
                 <select name="lieux" id="lieux" className="input input-bordered w-full outline-none" defaultValue={event.lieu?.idLieu}>
                     {lieux.data?.map((lieu: Lieu) => 
-                           <option value={lieu.idLieu} key={lieu.idLieu}>{lieu.adresse}, {lieu.ville}</option>
+                           <option value={lieu.idLieu} key={lieu.idLieu}>{lieu.ville} : {lieu.localisation}</option>
                     )}
                 </select>
             </label>
             <label className='flex items-center'>
                 <FaUser size={'55'} className='bg-secondary p-4 text-primary rounded-xl mr-2'/>
-                <select name="creator" id="creator" className="input input-bordered w-full outline-none" defaultValue={event.utilisateur.idUtilisateur}>
-                    { users.data?.map((user: User) => (
-                        <option value={user.idUtilisateur} key={user.idUtilisateur}>{user.prenom} {user.nom}</option>
-                    ))}
-                </select>
+                <h3 className='ml-4 font-semibold'>{event.utilisateur.prenom} {event.utilisateur.nom}</h3>
             </label>
             <label className='flex items-center'>
                 <GiTeacher size={'55'} className='bg-secondary p-4 text-primary rounded-xl mr-2'/>
@@ -167,7 +166,7 @@ export const EventForm = ({event}: {event: Evenment}) => {
                     placeholder="Lien des ressources"
                 />
             </label>
-            <button className='btn btn-primary' type='submit'>Modifier</button>
+            <button className='btn btn-primary text-base-100' type='submit'>Modifier</button>
         </form>
   )
 }

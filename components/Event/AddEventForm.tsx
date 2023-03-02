@@ -7,7 +7,7 @@ import {
 } from '@tanstack/react-query'  
 import { AiOutlineCalendar, AiOutlineClockCircle } from "react-icons/ai";
 import { FaMapMarkerAlt, FaUser } from "react-icons/fa";
-import { Lieu, User } from "../../typing";
+import { Lieu, Role, User } from "../../typing";
 import { GiTeacher } from "react-icons/gi";
 import { BsClipboardCheck } from "react-icons/bs";
 import React, { useState } from "react";
@@ -27,7 +27,7 @@ export const AddEventForm = () => {
       console.log(lieux)
       const users = useQuery({
         queryKey: ['users'],
-        queryFn: () => fetch('http://amie.labinno-mtech.fr/api/utilisateur/getallutilisateurs').then((res) => res.json()),
+        queryFn: () => fetch('http://amie.labinno-mtech.fr/api/utilisateur/getallutilisateursavecroles').then((res) => res.json()),
       })
       console.log(users)
     const addNewEvent = async (event: any) => {
@@ -113,16 +113,17 @@ export const AddEventForm = () => {
                 <FaMapMarkerAlt size={'55'} className='bg-secondary p-4 text-primary rounded-xl mr-2'/>
                 <select name="lieux" id="lieux" className="input input-bordered w-full outline-none">
                     { lieux.data?.map((lieu: Lieu) => (
-                        <option value={lieu.idLieu} key={lieu.idLieu}>{lieu.adresse}, {lieu.ville}</option>
+                        <option value={lieu.idLieu} key={lieu.idLieu} ><p className='text-sm'>{lieu.adresse}, {lieu.ville} :</p><p className="text-sm font-semibold"> {lieu.localisation}</p></option>
                     ))}
                 </select>
             </label>
             <label className='flex items-center'>
                 <FaUser size={'55'} className='bg-secondary p-4 text-primary rounded-xl mr-2'/>
                 <select name="creator" id="creator" className="input input-bordered w-full outline-none">
-                    { users.data?.map((user: User) => (
-                        <option value={user.idUtilisateur} key={user.idUtilisateur}>{user.prenom} {user.nom}</option>
-                    ))}
+                    { users.data?.map((user: User) => user).map((roles: Role[] ) => roles).map((role: Role) => role).filter((role:Role) => role.libelle === "Administrateur" || "Organisateur").map((userFiltered : User) =>
+                            <option value={userFiltered.idUtilisateur} key={userFiltered.idUtilisateur}>{userFiltered.prenom} {userFiltered.nom}</option>
+                        )
+                    }
                 </select>
             </label>
             <label className='flex items-center'>

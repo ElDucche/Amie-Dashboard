@@ -9,7 +9,23 @@ module.exports = {
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
     },
-    extend: {},
+    extend: {
+      keyframes: {
+        leftappear : {
+          '0%' : {
+            transform: 'translateX(-10%)',
+            opacity: 'O',
+            },
+          '100%' : {
+            transform: 'translateX(0)',
+            opacity: '1',
+            }
+        }
+      },
+      animation: {
+        leftappear : 'leftappear 75ms ease-in-out forwards',
+      },
+    },
   },
   daisyui: {
     themes: [
@@ -19,7 +35,7 @@ module.exports = {
           "secondary": "#e4ebda",
           "accent": "#11596F",                
           "neutral": "#3C3C3C",
-          "base-100": "#FDFDFD",
+          "base-100": "#FFF",
           "info": "#8CCAC1",
           "success": "#9CB686",
           "warning": "#EE9C3C",
@@ -30,5 +46,6 @@ module.exports = {
   },
   plugins: [
     require('daisyui'),
+    require('tailwind-layouts'),
   ],
 }
