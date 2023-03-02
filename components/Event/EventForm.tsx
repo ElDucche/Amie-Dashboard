@@ -32,12 +32,12 @@ export const EventForm = ({event}: {event: Evenment}) => {
         queryKey: ['users'],
         queryFn: () => fetch('http://amie.labinno-mtech.fr/api/utilisateur/getallutilisateurs').then((res) => res.json()),
       })
-    const modifyEvent = async (event: any) => {
-        event.preventDefault();
-        const formData = new FormData(event.currentTarget);
+    const modifyEvent = async (e: any) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
         const entries = Object.fromEntries(formData.entries());
         const lieu = lieux.data.filter((lieu: Lieu) => lieu.idLieu == Number(entries.lieux))
-        console.log(lieu)
+        // console.log(lieu)
         
         const body = {
             "date_debut": entries.date_debut,
@@ -52,10 +52,9 @@ export const EventForm = ({event}: {event: Evenment}) => {
             "lieu": lieu[0],
             "statut": entries.statut
         }
-        console.log(entries);
-        console.log(JSON.stringify(body))
-        console.log(entries.event)
-        fetch(`http://amie.labinno-mtech.fr/api/evenement/${entries.creator}/${entries.event}`, {
+        // console.log(entries);
+        // console.log(JSON.stringify(body))
+        fetch(`http://amie.labinno-mtech.fr/api/evenement/${event.utilisateur.idUtilisateur}/${event.idEvenement}`, {
             headers: {
                 'Content-Type': 'application/json'
                 },
@@ -70,7 +69,6 @@ export const EventForm = ({event}: {event: Evenment}) => {
   return (
     <form className='grid gap-2 p-2 rounded-xl m-auto' onSubmit={modifyEvent}>
             {/* l'image de l'event */}
-            <input type="text" value={event.idEvenement} name='event'className="hidden"/>
             <label>
                 <img src={`data:image/png;base64, ${event.image}`} alt="Image de l'évènement" className='w-full h-20 flex items-center justify-center border rounded-lg'/>
                 <input type="file" name="photo" id="photo" className="file-input file-input-bordered file-input-lg w-full"/>
@@ -130,10 +128,6 @@ export const EventForm = ({event}: {event: Evenment}) => {
                            <option value={lieu.idLieu} key={lieu.idLieu}>{lieu.ville} : {lieu.localisation}</option>
                     )}
                 </select>
-            </label>
-            <label className='flex items-center'>
-                <FaUser size={'55'} className='bg-secondary p-4 text-primary rounded-xl mr-2'/>
-                <h3 className='ml-4 font-semibold'>{event.utilisateur.prenom} {event.utilisateur.nom}</h3>
             </label>
             <label className='flex items-center'>
                 <GiTeacher size={'55'} className='bg-secondary p-4 text-primary rounded-xl mr-2'/>

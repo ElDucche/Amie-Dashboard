@@ -10,9 +10,9 @@ export default function RootLayout({
   }) {
     return (
       <html lang="fr">
-        <body className='flex justify-between'>
+        <body className=''>
             <Menu />
-            <div className='ml-4 p-4 w-screen'>
+            <div className='w-3/4 mx-auto mt-6'>
                 {children}
             </div>
         </body>

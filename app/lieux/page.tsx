@@ -15,12 +15,12 @@ const fetchLieux = async () => {
 export default async function Lieux() {
     const lieux = await fetchLieux(); 
    return (
-        <div className="ml-4">
+        <div className="">
              <Title>Lieux</Title>
              <AddLieuButton />
              <div className="">
                 <div className="mt-12 transition-all">
-                    <table className="transition-all w-3/4 shadow-[5px_5px_0_0_rgba(106,165,23,0.12)] border border-secondary">
+                    <table className="transition-all w-full rounded">
                         {/* <!-- head --> */}
                         {/* type Lieu = {
                             adresse: string;
@@ -31,21 +31,21 @@ export default async function Lieux() {
                             ville: string;
                         } */}
                         <thead >
-                        <tr className="h-12">
-                            <th className='p-4 h-12 w-28 bg-base-100 border-b border-b-primary hover:bg-primary hover:text-base-100 transition-all'>Adresse</th>
-                            <th className='p-4 h-12 w-28 bg-base-100 border-b border-b-primary hover:bg-primary hover:text-base-100 transition-all'>Code Postal</th>
-                            <th className='p-4 h-12 w-44 bg-base-100 border-b border-b-primary hover:bg-primary hover:text-base-100 transition-all'>Ville</th>
-                            <th className='p-4 h-12 w-40 bg-base-100 border-b border-b-primary hover:bg-primary hover:text-base-100 transition-all'>Localisation</th>
-                            <th className="p-4 h-12 w-12 bg-base-100 border-b border-b-primary hover:bg-primary hover:text-base-100 transition-all">Modifier</th>
+                        <tr className="h-12 text-neutral bg-neutral/5">
+                            <th className='p-4 w-28 rounded-tl-lg'>Adresse</th>
+                            <th className='p-4 w-28'>Code Postal</th>
+                            <th className='p-4 w-44'>Ville</th>
+                            <th className='p-4 w-40'>Localisation</th>
+                            <th className="p-4 w-12 rounded-tr-lg">Modifier</th>
                         </tr>
                         </thead>
                         <tbody className="transition-all duration-150">
                             {lieux.map(lieu =>( 
-                                    <tr className="group transition-all hover:bg-secondary border-b border-secondary" key={lieu.idLieu}>
-                                        <th className="p-4 h-12 font-light capitalize transition-all">{lieu.adresse}</th>
-                                        <th className="p-4 h-12 font-light capitalize transition-all"> {lieu.codePostal}</th>
-                                        <th className="p-4 h-12 font-light transition-all">{lieu.ville}</th>
-                                        <th className="p-4 h-12 font-light transition-all">{lieu.localisation}</th>
+                                    <tr className="group h-12 transition-all hover:bg-neutral/5 border-b border-neutral/5" key={lieu.idLieu}>
+                                        <th className="p-4 font-light capitalize transition-all text-xs">{lieu.adresse}</th>
+                                        <th className="p-4 font-light capitalize transition-all"> {lieu.codePostal}</th>
+                                        <th className="p-4 transition-all">{lieu.ville}</th>
+                                        <th className="p-4 font-light transition-all text-sm">{lieu.localisation}</th>
                                         <th className="p-4 h-12">
                                             <ModifyLieuButton lieu={lieu} />
                                         </th>

@@ -113,7 +113,7 @@ export const AddEventForm = () => {
                 <FaMapMarkerAlt size={'55'} className='bg-secondary p-4 text-primary rounded-xl mr-2'/>
                 <select name="lieux" id="lieux" className="input input-bordered w-full outline-none">
                     { lieux.data?.map((lieu: Lieu) => (
-                        <option value={lieu.idLieu} key={lieu.idLieu} ><p className='text-sm'>{lieu.adresse}, {lieu.ville} :</p><p className="text-sm font-semibold"> {lieu.localisation}</p></option>
+                        <option value={lieu.idLieu} key={lieu.idLieu} className="text-sm" >{lieu.adresse}, {lieu.ville} : {lieu.localisation}</option>
                     ))}
                 </select>
             </label>

@@ -13,17 +13,28 @@ module.exports = {
       keyframes: {
         leftappear : {
           '0%' : {
-            transform: 'translateX(-10%)',
+            transform: 'translateX(40%)',
             opacity: 'O',
             },
           '100%' : {
             transform: 'translateX(0)',
             opacity: '1',
             }
+        },
+        smoothappear : {
+          '0%' : {
+            transform: 'scale(0.5)',
+            opacity: 'O',
+            },
+          '100%' : {
+            transform: 'scale(1)',
+            opacity: '1',
+            }
         }
       },
       animation: {
-        leftappear : 'leftappear 75ms ease-in-out forwards',
+        leftappear : 'leftappear 130ms ease-in-out forwards',
+        smoothappear: 'smoothappear 150ms ease-in-out forwards',
       },
     },
   },

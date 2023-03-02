@@ -11,16 +11,14 @@ export const EventDeleteAlert = ({event} : {event: Evenment}) => {
     })
     router.refresh();
   }
+
   return (
-    <form className='w-92' onSubmit={deleteEvent}>
+    <form className='w-64 grid' onSubmit={deleteEvent}>
       <input type="text" value={event.idEvenement} name='event' className='hidden'/>
       <label>
-        <h3 className='p-4 mb-2 text-xl'>Etes-vous sûr de vouloir supprimer cet évènement ?</h3>
+        <h3 className='p-4 mb-2 text-lg font-medium text-center'>Etes-vous sûr de vouloir supprimer cet évènement ?</h3>
       </label>
-      <div className="grid grid-cols-2 gap-2">
-        <button className='btn btn-error ' type='submit'>Supprimer</button>
-        <button className='btn btn-primary text-base-100' onClick={(e) => e.stopPropagation()}>Annuler</button>
-      </div>
+      <button className='btn btn-error ' type='submit'>Supprimer</button>
     </form>
   )
 }
