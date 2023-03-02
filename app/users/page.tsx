@@ -39,7 +39,7 @@ export default async function Users() {
                                         <th className="p-4 h-12 font-light transition-all">
                                             {
                                                 user.roles.map(role => 
-                                                    <p>{role.libelle}</p>
+                                                    <p key={role.idRole}>{role.libelle}</p>
                                                 )
                                             }
                                         </th>
