@@ -1,15 +1,8 @@
 'use client'
-import {
-    useQuery,
-    useMutation,
-    useQueryClient,
-    QueryClient,
-    QueryClientProvider,
-  } from '@tanstack/react-query'  
+import { useQuery } from '@tanstack/react-query'  
 import { AiOutlineCalendar, AiOutlineClockCircle } from 'react-icons/ai';
-import Tag from '../../components/Tag';
-import { Evenment, Lieu, User } from '../../typing';
-import { FaMapMarkerAlt, FaUser } from 'react-icons/fa';
+import { Evenment, Lieu} from '../../typing';
+import { FaMapMarkerAlt } from 'react-icons/fa';
 import {GiTeacher} from 'react-icons/gi'
 import { useRouter } from 'next/navigation';
 import { VscInfo } from 'react-icons/vsc';
@@ -33,7 +26,6 @@ export const EventForm = ({event}: {event: Evenment}) => {
         queryFn: () => fetch('http://amie.labinno-mtech.fr/api/utilisateur/getallutilisateurs').then((res) => res.json()),
       })
     const modifyEvent = async (e: any) => {
-        e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const entries = Object.fromEntries(formData.entries());
         const lieu = lieux.data.filter((lieu: Lieu) => lieu.idLieu == Number(entries.lieux))
@@ -108,16 +100,16 @@ export const EventForm = ({event}: {event: Evenment}) => {
             <label className='flex items-center'>
                 <AiOutlineCalendar size={"55"} className='bg-secondary p-4 text-primary rounded-xl mr-2'/>
                 <div>
-                    <input type="text" name="date_debut" defaultValue={event.date_debut} className="input input-bordered"/>
-                    <input type="text" name="date_fin" defaultValue={event.date_fin} className="input input-bordered"/>
+                    <input type="date" name="date_debut" defaultValue={event.date_debut} className="input input-bordered"/>
+                    <input type="date" name="date_fin" defaultValue={event.date_fin} className="input input-bordered"/>
                 </div>
                 
             </label>
             <label className='flex items-center'>
                 <AiOutlineClockCircle size={"55"} className='bg-secondary p-4 text-primary rounded-xl mr-2'/>
                 <div>
-                    <input type="text" name="heure_debut" defaultValue={event.heure_debut} className="input input-bordered"/>
-                    <input type="text" name="heure_fin" defaultValue={event.date_fin} className="input input-bordered"/>
+                    <input type="time" name="heure_debut" defaultValue={event.heure_debut} className="input input-bordered"/>
+                    <input type="time" name="heure_fin" defaultValue={event.heure_fin} className="input input-bordered"/>
                 </div>
                 
             </label>

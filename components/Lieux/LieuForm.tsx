@@ -1,10 +1,7 @@
 'use client'
 
-
 import { useRouter } from 'next/navigation'
 import { Lieu } from '../../typing'
-
-
 
 export const LieuForm = ({lieu}: {lieu: Lieu}) => {
   const router = useRouter()
@@ -15,13 +12,12 @@ export const LieuForm = ({lieu}: {lieu: Lieu}) => {
         "adresse": entries.adresse,
         "codePostal": entries.codePostal,
         "coordoneesGps": lieu.coordoneesGps,
-        "idLieu": lieu.idLieu,
         "localisation": entries.localosation,
         "places": entries.places,
         "ville": entries.ville,
     }
     console.log(JSON.stringify(body));
-    await fetch(`http://amie.labinno-mtech.fr/api/lieu/updatelieu`,{
+    await fetch(`http://amie.labinno-mtech.fr/api/lieu/updatelieu/${lieu.idLieu}`,{
       headers: {
         'Content-Type': 'application/json'
         },
@@ -31,22 +27,13 @@ export const LieuForm = ({lieu}: {lieu: Lieu}) => {
 
     router.refresh();
   }
-  const deleteLieu = async () => {
-    const body = {
-        "adresse": lieu.adresse,
-        "codePostal": lieu.codePostal,
-        "coordoneesGps": lieu.coordoneesGps,
-        "idLieu": lieu.idLieu,
-        "localisation": lieu.localisation,
-        "places": lieu.places,
-        "ville": lieu.ville
-    }
-    await fetch(`http://amie.labinno-mtech.fr/api/lieu/deletelieu`,{
+  const deleteLieu = async (e:any) => {
+    e.preventDefault();
+    await fetch(`http://amie.labinno-mtech.fr/api/lieu/deletelieu/${lieu.idLieu}`,{
       headers: {
         'Content-Type': 'application/json'
         },
       method:'DELETE',
-      body: JSON.stringify(body),
     });
     router.refresh()
   }

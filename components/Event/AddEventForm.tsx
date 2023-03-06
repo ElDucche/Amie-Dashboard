@@ -45,6 +45,7 @@ export const AddEventForm = () => {
             "lien_ressources": entries.ressources,
             "statut": entries.statut
         }
+        console.log(body);
         
         fetch(`http://amie.labinno-mtech.fr/api/evenement/createevenement/${entries.creator}/${entries.lieux}`, {
             headers: {
@@ -96,16 +97,16 @@ export const AddEventForm = () => {
             <label className='flex items-center'>
                 <AiOutlineCalendar size={"55"} className='bg-secondary p-4 text-primary rounded-xl mr-2'/>
                 <div>
-                    <input type="text" name="date_debut" placeholder="Date de début : JJ/MM/AAAA" className="input input-bordered"/>
-                    <input type="text" name="date_fin" placeholder="Date de fin : JJ/MM/AAAA" className="input input-bordered"/>
+                    <input type="date" name="date_debut" placeholder="Date de début : JJ/MM/AAAA" className="input input-bordered"/>
+                    <input type="date" name="date_fin" placeholder="Date de fin : JJ/MM/AAAA" className="input input-bordered"/>
                 </div>
                 
             </label>
             <label className='flex items-center'>
                 <AiOutlineClockCircle size={"55"} className='bg-secondary p-4 text-primary rounded-xl mr-2'/>
                 <div>
-                    <input type="text" name="heure_debut" placeholder="Heure de début : hh:mm" className="input input-bordered"/>
-                    <input type="text" name="heure_fin" placeholder="heure de fin : hh:mm" className="input input-bordered"/>
+                    <input type="time" name="heure_debut" placeholder="Heure de début : hh:mm" className="input input-bordered"/>
+                    <input type="time" name="heure_fin" placeholder="heure de fin : hh:mm" className="input input-bordered"/>
                 </div>
                 
             </label>

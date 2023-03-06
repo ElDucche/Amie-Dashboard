@@ -37,7 +37,7 @@ export type Lieu = {
     idLieu: number ;
     localisation: string;
     ville: string;
-    places:number;
+    places: number;
 }
 export type Faq = {
     question: string;
