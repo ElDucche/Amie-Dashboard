@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { AiOutlineQuestionCircle, AiOutlineHome, AiOutlineCalendar, AiOutlineUser, AiOutlineHeatMap } from 'react-icons/ai';
 import { FiMapPin } from 'react-icons/fi'
+import Session from './Session';
 
 function Menu() {
   return (
@@ -35,6 +36,7 @@ function Menu() {
             <p className='animate-leftappear hidden md:group-hover:block text-sm transition-all'>F.A.Q</p>
           </Link>
         </li> */}
+        <Session />
       </ul>
   )
 }
