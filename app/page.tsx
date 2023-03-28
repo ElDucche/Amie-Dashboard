@@ -39,7 +39,7 @@ export default async function Home() {
                             events.filter((event: Evenment) => event.date_debut >= todayDate).length
                         }
                     </span>
-                    <ul className="hidden group-hover:block animate-smoothappear_1s duration-500">
+                    <ul className="hidden group-hover:block animate-smoothappear_1s duration-500 w-full">
                         {
                             events.filter((event: Evenment) => event.date_debut >= todayDate).map((event:Evenment) =>
                             <Link href='/events' className="text-sm my-px" key={event.idEvenement}><li className="text-sm font-semibold p-2 border border-primary hover:bg-primary hover:text-base-100 rounded-lg transition-all">{event.label}</li></Link>
@@ -51,7 +51,7 @@ export default async function Home() {
                     <span className="group-hover:opacity-0 group-hover:hidden transition-all duration-300 animate-smoothappear_1s">
                         {events.filter((event: Evenment )=> event.statut === "Waiting").length} 
                     </span>
-                    <ul className="hidden group-hover:block animate-smoothappear_1s">
+                    <ul className="hidden group-hover:block animate-smoothappear_1s w-full">
                         {
                             events.filter((event: Evenment) => event.statut === "Waiting").map((event:Evenment) =>
                             <Link href='/events' className="text-sm my-1" key={event.idEvenement}><li className="text-sm my-1 font-semibold p-2 border border-primary hover:bg-primary hover:text-base-100 rounded-lg transition-all">{event.label}</li></Link>
@@ -65,7 +65,7 @@ export default async function Home() {
                             events.filter((event: Evenment) => event.date_debut <= todayDate).length
                         }
                     </span>
-                    <ul className="hidden group-hover:block animate-smoothappear_1s">
+                    <ul className="hidden group-hover:block animate-smoothappear_1s w-full">
                         {
                             events.filter((event: Evenment) => event.date_debut <= todayDate).map((event:Evenment) =>
                             <Link href='/events' className="text-sm my-px" key={event.idEvenement}><li className="text-sm font-semibold p-2 border border-primary hover:bg-primary hover:text-base-100 rounded-lg transition-all">{event.label}</li></Link>
