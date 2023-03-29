@@ -23,11 +23,14 @@ module.exports = {
         },
         smoothappear : {
           '0%' : {
-            transform: 'scale(0.9)',
+            transform: 'scale(0.8)',
             opacity: 'O',
             },
-          '50%' : {
+          '33%' : {
             transform: 'scale(1.05)',
+            },
+          '66%' : {
+            transform: 'scale(0.95)',
             },
           '100%' : {
             transform: 'scale(1)',
@@ -38,7 +41,7 @@ module.exports = {
       animation: {
         leftappear : 'leftappear 130ms ease-in-out forwards',
         smoothappear: 'smoothappear 350ms ease-in-out forwards',
-        smoothappear_1s: 'smoothappear .3s ease-in-out forwards',
+        smoothappear_1s: 'smoothappear .4s ease-in-out forwards',
       },
     },
   },

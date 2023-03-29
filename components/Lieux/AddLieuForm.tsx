@@ -1,8 +1,6 @@
 'use client'
-
-
 import { useRouter } from 'next/navigation'
-import { Lieu } from '../../typing'
+
 
 
 
@@ -19,7 +17,6 @@ export const AddLieuForm = () => {
         "places": entries.places,
         "ville": entries.ville,
     }
-    console.log(JSON.stringify(body));
     await fetch(`http://amie.labinno-mtech.fr/api/lieu/addlieu`,{
       headers: {
         'Content-Type': 'application/json'
@@ -27,7 +24,6 @@ export const AddLieuForm = () => {
       method:'POST',
       body: JSON.stringify(body),
     });
-
     router.refresh();
   }
 

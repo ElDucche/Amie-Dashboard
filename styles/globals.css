@@ -16,10 +16,14 @@
     .tag {
         @apply w-24 h-10 rounded-full text-base-100 flex items-center justify-evenly;
     }
-}
 
-@layer components {
     .shadow-mgen {
         @apply shadow-[5px_5px_0_0_rgba(106,165,23,0.12)];
+    }
+    .card {
+        @apply group-hover:hidden animate-smoothappear_1s text-3xl
+    }
+    .card-hover {
+        @apply hidden group-hover:block animate-smoothappear_1s w-full
     }
 }
